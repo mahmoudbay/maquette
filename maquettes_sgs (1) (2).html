@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGS — Maquettes UI/UX</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — SGS School Management System
+   Aesthetic: Clean Institutional • Trusted Blue
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --ink: #0F1B2D;
+  --ink-mid: #2E4057;
+  --ink-soft: #6B7A8D;
+  --ink-muted: #A8B3C0;
+  --canvas: #F5F7FA;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+
+  --blue-900: #0A2540;
+  --blue-800: #0D3268;
+  --blue-700: #1148A8;
+  --blue-600: #1A5FD6;
+  --blue-500: #2E7CF6;
+  --blue-400: #5B9EFF;
+  --blue-100: #E8F0FF;
+  --blue-50:  #F0F5FF;
+
+  --green-600: #0D7A55;
+  --green-100: #D1F0E6;
+  --amber-600: #C07A00;
+  --amber-100: #FFF3CC;
+  --red-600:   #C4283C;
+  --red-100:   #FFE4E8;
+  --purple-600: #6B3FA0;
+  --purple-100: #EFE6FF;
+
+  --border: #E2E8F0;
+  --border-strong: #C5D0DE;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 3px rgba(15,27,45,0.08), 0 1px 2px rgba(15,27,45,0.04);
+  --shadow-md: 0 4px 16px rgba(15,27,45,0.10), 0 2px 6px rgba(15,27,45,0.06);
+  --shadow-lg: 0 12px 40px rgba(15,27,45,0.14), 0 4px 12px rgba(15,27,45,0.08);
+  --shadow-focus: 0 0 0 3px rgba(46,124,246,0.25);
+
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #0A1628;
+  color: var(--ink);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── COVER PAGE ──────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0A1628 0%, #0D2554 50%, #0A1628 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 20%, rgba(46,124,246,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 70% 80%, rgba(107,63,160,0.12) 0%, transparent 60%);
+}
+.cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,124,246,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,124,246,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.cover-badge {
+  position: relative;
+  background: rgba(46,124,246,0.15);
+  border: 1px solid rgba(46,124,246,0.35);
+  color: var(--blue-400);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.cover-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.cover-logo-icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-800));
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 24px rgba(46,124,246,0.4);
+}
+.cover-logo-text {
+  text-align: left;
+}
+.cover-logo-text .name {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.cover-logo-text .tagline {
+  font-size: 13px;
+  color: var(--blue-400);
+  font-weight: 500;
+}
+.cover h1 {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 58px);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+.cover h1 em { color: var(--blue-400); font-style: italic; }
+.cover p {
+  position: relative;
+  color: rgba(255,255,255,0.6);
+  font-size: 17px;
+  max-width: 540px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+.screen-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 700px;
+}
+.screen-nav a {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.screen-nav a:hover {
+  background: rgba(46,124,246,0.2);
+  border-color: rgba(46,124,246,0.4);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.screen-nav a .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+/* ── SCREEN WRAPPER ─────────────────────────────────── */
+.screen-section {
+  padding: 40px 0;
+  background: var(--canvas);
+}
+.screen-section + .screen-section { background: #F0F4FA; }
+.screen-section:nth-child(even) { background: #F8FAFD; }
+
+.screen-label {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.screen-num {
+  width: 32px; height: 32px;
+  background: var(--blue-900);
+  color: var(--blue-400);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 600;
+  flex-shrink: 0;
+}
+.screen-title { font-size: 13px; font-weight: 700; color: var(--ink-mid); text-transform: uppercase; letter-spacing: 0.08em; }
+.screen-desc { font-size: 12px; color: var(--ink-soft); margin-left: auto; }
+
+/* ── APP SHELL ──────────────────────────────────────── */
+.app-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.app-shell {
+  background: var(--canvas);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+  overflow: hidden;
+  display: flex;
+  height: 680px;
+  position: relative;
+}
+
+/* Browser chrome */
+.browser-bar {
+  background: #1C2333;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.browser-dots { display: flex; gap: 6px; }
+.browser-dots span {
+  width: 12px; height: 12px; border-radius: 50%;
+}
+.d1 { background: #FF5F57; }
+.d2 { background: #FEBC2E; }
+.d3 { background: #28C840; }
+.browser-url {
+  flex: 1;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 5px 12px;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.browser-wrap {
+  background: var(--canvas);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  background: var(--blue-900);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.sidebar-logo {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-logo .logo-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.logo-name {
+  font-size: 16px; font-weight: 800; color: #fff;
+  letter-spacing: -0.02em;
+}
+.logo-sub {
+  font-size: 10px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.sidebar-user {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; gap: 10px;
+}
+.user-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, #2E7CF6, #6B3FA0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.user-info .user-name { font-size: 12px; font-weight: 600; color: #fff; }
+.user-info .user-role {
+  font-size: 10px; color: var(--blue-400);
+  background: rgba(46,124,246,0.15); border-radius: 4px; padding: 1px 6px;
+  display: inline-block; margin-top: 2px;
+}
+
+.sidebar-nav { flex: 1; padding: 12px 0; overflow-y: auto; }
+.nav-section { padding: 8px 20px 4px; }
+.nav-section-label {
+  font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px;
+  color: rgba(255,255,255,0.55);
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+.nav-item.active {
+  color: #fff;
+  background: rgba(46,124,246,0.18);
+  border-left-color: var(--blue-500);
+}
+.nav-item .ni { font-size: 15px; width: 20px; text-align: center; }
+.nav-badge {
+  margin-left: auto;
+  background: var(--red-600);
+  color: #fff; font-size: 9px; font-weight: 700;
+  padding: 1px 6px; border-radius: 100px;
+}
+
+/* ── MAIN CONTENT ───────────────────────────────────── */
+.main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 56px;
+  display: flex; align-items: center; gap: 16px;
+  flex-shrink: 0;
+}
+.topbar-title { font-size: 15px; font-weight: 700; color: var(--ink); flex: 1; }
+.topbar-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 7px 12px;
+  width: 200px;
+}
+.topbar-search input {
+  background: none; border: none; outline: none;
+  font-size: 12px; color: var(--ink); font-family: var(--font-body);
+  width: 100%;
+}
+.topbar-search span { color: var(--ink-muted); font-size: 14px; }
+.topbar-actions { display: flex; gap: 8px; }
+.icon-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 16px; color: var(--ink-soft);
+  position: relative;
+}
+.icon-btn .notif-dot {
+  position: absolute; top: 6px; right: 6px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--red-600); border: 1px solid var(--surface);
+}
+
+.page-body { flex: 1; overflow-y: auto; padding: 24px; }
+
+/* ── STATS CARDS ────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.stat-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.stat-trend {
+  font-size: 11px; font-weight: 600; padding: 3px 8px;
+  border-radius: 100px;
+}
+.trend-up { background: var(--green-100); color: var(--green-600); }
+.trend-down { background: var(--red-100); color: var(--red-600); }
+.stat-value { font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+
+/* ── SECTION HEADER ─────────────────────────────────── */
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.section-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+.section-subtitle { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
+
+/* ── BTN ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius-md);
+  font-size: 12px; font-weight: 600; font-family: var(--font-body);
+  cursor: pointer; border: none; transition: all 0.15s;
+}
+.btn-primary { background: var(--blue-600); color: #fff; }
+.btn-primary:hover { background: var(--blue-700); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--ink-mid);
+}
+.btn-outline:hover { background: var(--canvas); border-color: var(--blue-400); color: var(--blue-600); }
+.btn-sm { padding: 5px 12px; font-size: 11px; }
+.btn-ghost { background: none; color: var(--blue-600); padding: 6px 10px; }
+
+/* ── TABLE ──────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 11px; font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  background: var(--canvas);
+}
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--blue-50); }
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── BADGES ─────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+}
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+.badge-green  { background: var(--green-100); color: var(--green-600); }
+.badge-green::before  { background: var(--green-600); }
+.badge-amber  { background: var(--amber-100); color: var(--amber-600); }
+.badge-amber::before  { background: var(--amber-600); }
+.badge-red    { background: var(--red-100); color: var(--red-600); }
+.badge-red::before    { background: var(--red-600); }
+.badge-blue   { background: var(--blue-100); color: var(--blue-700); }
+.badge-blue::before   { background: var(--blue-600); }
+.badge-purple { background: var(--purple-100); color: var(--purple-600); }
+.badge-purple::before { background: var(--purple-600); }
+
+/* ── AVATAR ─────────────────────────────────────────── */
+.avatar-text {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+}
+
+/* ── CARDS GRID ─────────────────────────────────────── */
+.cards-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cards-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── CHART BARS ─────────────────────────────────────── */
+.mini-chart { display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-top: 12px; }
+.bar {
+  flex: 1; border-radius: 3px 3px 0 0;
+  transition: opacity 0.2s;
+}
+.bar:hover { opacity: 0.75; }
+.chart-labels { display: flex; gap: 4px; margin-top: 4px; }
+.chart-label { flex: 1; font-size: 9px; color: var(--ink-muted); text-align: center; font-family: var(--font-mono); }
+
+/* ── FORM ELEMENTS ──────────────────────────────────── */
+.form-group { margin-bottom: 16px; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--ink-mid); margin-bottom: 6px; display: block; }
+.form-input {
+  width: 100%;
+  background: var(--canvas);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  font-size: 13px; font-family: var(--font-body); color: var(--ink);
+  outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-input:focus { border-color: var(--blue-500); box-shadow: var(--shadow-focus); background: #fff; }
+.form-input.filled { border-color: var(--blue-300); background: #fff; }
+.form-select {
+  width: 100%;
+  background: var(--canvas);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  font-size: 13px; font-family: var(--font-body); color: var(--ink);
+  outline: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7A8D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-textarea {
+  width: 100%;
+  background: var(--canvas);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  font-size: 13px; font-family: var(--font-body); color: var(--ink);
+  outline: none; resize: none; height: 80px;
+}
+.form-footer {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+.upload-zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.upload-zone:hover { border-color: var(--blue-400); background: var(--blue-50); color: var(--blue-700); }
+.upload-zone .upload-icon { font-size: 24px; margin-bottom: 6px; }
+
+/* ── TIMELINE ───────────────────────────────────────── */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--border);
+}
+.timeline-item { position: relative; padding-bottom: 20px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -20px; top: 3px;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--surface); background: var(--blue-500);
+}
+.timeline-dot.done { background: var(--green-600); }
+.timeline-dot.pending { background: var(--amber-600); }
+.timeline-dot.grey { background: var(--ink-muted); }
+.tl-title { font-size: 12px; font-weight: 600; color: var(--ink); }
+.tl-meta { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+
+/* ── QUICK ACTIONS ──────────────────────────────────── */
+.quick-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.quick-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; cursor: pointer; text-align: center;
+  transition: all 0.2s;
+}
+.quick-card:hover { border-color: var(--blue-400); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.quick-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.quick-label { font-size: 11px; font-weight: 600; color: var(--ink-mid); }
+
+/* ── PROGRESS ───────────────────────────────────────── */
+.progress-bar-wrap { background: var(--canvas); border-radius: 100px; height: 6px; overflow: hidden; margin-top: 6px; }
+.progress-bar { height: 100%; border-radius: 100px; background: var(--blue-500); }
+
+/* ── MODAL OVERLAY ──────────────────────────────────── */
+.modal-overlay {
+  position: absolute; inset: 0; background: rgba(10,22,40,0.55);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 440px; max-width: 95%;
+  overflow: hidden;
+}
+.modal-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.modal-close {
+  width: 28px; height: 28px; border-radius: var(--radius-sm);
+  background: var(--canvas); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--ink-soft); font-size: 16px;
+}
+.modal-body { padding: 20px 24px; }
+.modal-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue-50); border: 1px solid var(--blue-100);
+  border-radius: var(--radius-md); padding: 10px 14px;
+  font-size: 12px; color: var(--blue-700); margin-bottom: 16px;
+  width: 100%;
+}
+
+/* ── DONUT ──────────────────────────────────────────── */
+.donut-wrap { display: flex; align-items: center; gap: 20px; }
+.donut-legend .legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-mid); margin-bottom: 6px;
+}
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-val { font-weight: 700; color: var(--ink); margin-left: auto; padding-left: 16px; }
+
+/* ── ELEVE ROW ──────────────────────────────────────── */
+.eleve-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.eleve-card:last-child { border-bottom: none; }
+.eleve-card:hover { background: var(--blue-50); }
+.eleve-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.eleve-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.eleve-meta { font-size: 11px; color: var(--ink-soft); }
+.eleve-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+/* ── NOTIFICATION PANEL ─────────────────────────────── */
+.notif-item {
+  display: flex; gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-icon-wrap {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.notif-text { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+.notif-text strong { color: var(--ink); font-weight: 600; }
+.notif-time { font-size: 10px; color: var(--ink-muted); margin-top: 3px; font-family: var(--font-mono); }
+
+/* ── DOC CARD ───────────────────────────────────────── */
+.doc-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+.doc-card:hover { border-color: var(--blue-400); box-shadow: var(--shadow-md); }
+.doc-icon {
+  width: 44px; height: 56px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.doc-name { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.doc-meta { font-size: 11px; color: var(--ink-soft); }
+
+/* ── TABS ───────────────────────────────────────────── */
+.tabs { display: flex; gap: 2px; background: var(--canvas); border-radius: var(--radius-md); padding: 3px; }
+.tab {
+  padding: 7px 14px; font-size: 12px; font-weight: 600;
+  border-radius: 6px; cursor: pointer; color: var(--ink-soft);
+  transition: all 0.15s;
+}
+.tab.active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
+
+/* ── CHIP ───────────────────────────────────────────── */
+.chip {
+  display: inline-block;
+  padding: 4px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  background: var(--canvas); color: var(--ink-mid);
+  border: 1px solid var(--border);
+}
+
+/* ── ALERT BOX ──────────────────────────────────────── */
+.alert {
+  display: flex; gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 12px; line-height: 1.5;
+  margin-bottom: 16px;
+}
+.alert-icon { font-size: 16px; flex-shrink: 0; }
+.alert-info { background: var(--blue-50); border: 1px solid var(--blue-100); color: var(--blue-700); }
+.alert-warn { background: var(--amber-100); border: 1px solid #FFDB80; color: var(--amber-600); }
+
+/* ── DIVIDER ─────────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+/* ── SCROLLBAR ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
+
+/* ══════════════ SECTION SEPARATORS ═══════════════════ */
+.section-divider {
+  background: #0A1628;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 100%;
+}
+.section-divider h2 {
+  font-family: var(--font-display);
+  font-size: 32px; color: #fff;
+  margin-bottom: 8px;
+}
+.section-divider p { color: rgba(255,255,255,0.5); font-size: 14px; }
+.section-divider .module-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 20px; }
+.module-chip {
+  padding: 6px 16px; border-radius: 100px;
+  font-size: 12px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     COVER PAGE
+     ═══════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-badge">L-03 · Maquettes UI/UX · SGS v1.0</div>
+  <div class="cover-logo">
+    <div class="cover-logo-icon">🏫</div>
+    <div class="cover-logo-text">
+      <div class="name">SGS</div>
+      <div class="tagline">School Management System</div>
+    </div>
+  </div>
+  <h1>Maquettes <em>Interface</em><br>Utilisateur</h1>
+  <p>Wireframes haute-fidélité pour l'application web de gestion interne — 6 écrans couvrant l'ensemble des modules fonctionnels.</p>
+  <nav class="screen-nav">
+    <a href="#screen1"><span class="dot" style="background:#2E7CF6"></span>01 — Tableau de bord</a>
+    <a href="#screen2"><span class="dot" style="background:#0D7A55"></span>02 — Demande RH</a>
+    <a href="#screen3"><span class="dot" style="background:#C07A00"></span>03 — Gestion financière</a>
+    <a href="#screen4"><span class="dot" style="background:#6B3FA0"></span>04 — Vie scolaire</a>
+    <a href="#screen5"><span class="dot" style="background:#C4283C"></span>05 — Documents scolaires</a>
+    <a href="#screen6"><span class="dot" style="background:#1A5FD6"></span>06 — Modal confirmation</a>
+  </nav>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 1 — DASHBOARD DIRECTION
+     ═══════════════════════════════════════════════════ -->
+<div id="screen1" class="screen-section" style="background:#F0F5FF; padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num">01</div>
+      <div>
+        <div class="screen-title">Tableau de bord — Direction</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Vue d'ensemble en temps réel · Rôle : Direction</div>
+      </div>
+      <span class="screen-desc">1280 × 720</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/dashboard</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-logo">
+            <div class="logo-row">
+              <div class="logo-icon">🏫</div>
+              <div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="user-avatar">MA</div>
+            <div class="user-info">
+              <div class="user-name">M. Al-Fassi</div>
+              <div class="user-role">Direction</div>
+            </div>
+          </div>
+          <div class="sidebar-nav">
+            <div class="nav-section"><div class="nav-section-label">Principal</div></div>
+            <div class="nav-item active"><span class="ni">⊞</span> Tableau de bord</div>
+            <div class="nav-item"><span class="ni">📊</span> Rapports</div>
+            <div class="nav-section"><div class="nav-section-label">Modules</div></div>
+            <div class="nav-item"><span class="ni">👥</span> Ressources humaines <span class="nav-badge">3</span></div>
+            <div class="nav-item"><span class="ni">💰</span> Gestion financière</div>
+            <div class="nav-item"><span class="ni">🏠</span> Vie scolaire</div>
+            <div class="nav-item"><span class="ni">📄</span> Documents scolaires</div>
+            <div class="nav-section"><div class="nav-section-label">Système</div></div>
+            <div class="nav-item"><span class="ni">⚙️</span> Paramètres</div>
+            <div class="nav-item"><span class="ni">🔗</span> Intégrations</div>
+          </div>
+        </div>
+        <!-- Main -->
+        <div class="main-content">
+          <div class="topbar">
+            <div class="topbar-title">Tableau de bord</div>
+            <div class="topbar-search">
+              <span>🔍</span>
+              <input placeholder="Recherche rapide…" readonly>
+            </div>
+            <div class="topbar-actions">
+              <div class="icon-btn">🔔<div class="notif-dot"></div></div>
+              <div class="icon-btn">❓</div>
+            </div>
+          </div>
+          <div class="page-body">
+            <!-- Welcome -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+              <div>
+                <div style="font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;">Bonjour, M. Al-Fassi 👋</div>
+                <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Mercredi 11 mars 2026 · Année scolaire 2025–2026</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <button class="btn btn-outline btn-sm">📥 Exporter rapport</button>
+                <button class="btn btn-primary btn-sm">+ Nouvelle action</button>
+              </div>
+            </div>
+            <!-- Stats -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-top">
+                  <div class="stat-icon" style="background:#E8F0FF;">👨‍🎓</div>
+                  <span class="stat-trend trend-up">+4.2%</span>
+                </div>
+                <div class="stat-value">847</div>
+                <div class="stat-label">Élèves inscrits</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-top">
+                  <div class="stat-icon" style="background:#D1F0E6;">👨‍🏫</div>
+                  <span class="stat-trend trend-up">+1</span>
+                </div>
+                <div class="stat-value">62</div>
+                <div class="stat-label">Enseignants actifs</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-top">
+                  <div class="stat-icon" style="background:#FFF3CC;">📋</div>
+                  <span class="stat-trend trend-down">3 en attente</span>
+                </div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Demandes RH</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-top">
+                  <div class="stat-icon" style="background:#FFE4E8;">💰</div>
+                  <span class="stat-trend trend-up">Bilan +</span>
+                </div>
+                <div class="stat-value" style="font-size:22px;">42k</div>
+                <div class="stat-label">Bilan mensuel (MAD)</div>
+              </div>
+            </div>
+            <!-- Two columns -->
+            <div class="cards-2col">
+              <!-- Chart -->
+              <div class="card">
+                <div class="section-header">
+                  <div><div class="section-title">Absences — Février 2026</div><div class="section-subtitle">Par semaine</div></div>
+                  <div class="tabs" style="transform:scale(0.85);transform-origin:right;">
+                    <div class="tab">Mois</div><div class="tab active">Semaine</div>
+                  </div>
+                </div>
+                <div class="mini-chart">
+                  <div class="bar" style="height:45%;background:#BFDBFE;"></div>
+                  <div class="bar" style="height:62%;background:#93C5FD;"></div>
+                  <div class="bar" style="height:38%;background:#BFDBFE;"></div>
+                  <div class="bar" style="height:80%;background:#60A5FA;"></div>
+                  <div class="bar" style="height:55%;background:#93C5FD;"></div>
+                  <div class="bar" style="height:70%;background:#3B82F6;"></div>
+                  <div class="bar" style="height:42%;background:#BFDBFE;"></div>
+                  <div class="bar" style="height:90%;background:#2563EB;"></div>
+                  <div class="bar" style="height:60%;background:#93C5FD;"></div>
+                  <div class="bar" style="height:48%;background:#BFDBFE;"></div>
+                  <div class="bar" style="height:75%;background:#60A5FA;"></div>
+                  <div class="bar" style="height:52%;background:#93C5FD;"></div>
+                </div>
+                <div class="chart-labels">
+                  <div class="chart-label">S1</div><div class="chart-label">S2</div>
+                  <div class="chart-label">S3</div><div class="chart-label">S4</div>
+                  <div class="chart-label">S5</div><div class="chart-label">S6</div>
+                  <div class="chart-label">S7</div><div class="chart-label">S8</div>
+                  <div class="chart-label">S9</div><div class="chart-label">S10</div>
+                  <div class="chart-label">S11</div><div class="chart-label">S12</div>
+                </div>
+                <div style="display:flex;gap:16px;margin-top:14px;">
+                  <div style="font-size:11px;color:var(--ink-soft);">Total absences : <strong style="color:var(--ink)">284</strong></div>
+                  <div style="font-size:11px;color:var(--ink-soft);">Justifiées : <strong style="color:var(--green-600)">68%</strong></div>
+                  <div style="font-size:11px;color:var(--ink-soft);">Injustifiées : <strong style="color:var(--red-600)">32%</strong></div>
+                </div>
+              </div>
+              <!-- Demandes RH -->
+              <div class="card">
+                <div class="section-header">
+                  <div><div class="section-title">Demandes RH récentes</div><div class="section-subtitle">En attente de validation</div></div>
+                  <button class="btn btn-ghost btn-sm">Tout voir →</button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--canvas);border-radius:var(--radius-md);border:1px solid var(--border);">
+                    <div class="avatar-text" style="background:linear-gradient(135deg,#2E7CF6,#6B3FA0);font-size:11px;">HB</div>
+                    <div style="flex:1;">
+                      <div style="font-size:12px;font-weight:600;color:var(--ink);">H. Benali</div>
+                      <div style="font-size:11px;color:var(--ink-soft);">Congé maladie · 5 jours</div>
+                    </div>
+                    <span class="badge badge-amber">En attente</span>
+                    <button class="btn btn-primary btn-sm">✓</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--canvas);border-radius:var(--radius-md);border:1px solid var(--border);">
+                    <div class="avatar-text" style="background:linear-gradient(135deg,#0D7A55,#1A5FD6);font-size:11px;">KO</div>
+                    <div style="flex:1;">
+                      <div style="font-size:12px;font-weight:600;color:var(--ink);">K. Ouahbi</div>
+                      <div style="font-size:11px;color:var(--ink-soft);">Attestation de travail</div>
+                    </div>
+                    <span class="badge badge-amber">En attente</span>
+                    <button class="btn btn-primary btn-sm">✓</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--canvas);border-radius:var(--radius-md);border:1px solid var(--border);">
+                    <div class="avatar-text" style="background:linear-gradient(135deg,#C4283C,#C07A00);font-size:11px;">MR</div>
+                    <div style="flex:1;">
+                      <div style="font-size:12px;font-weight:600;color:var(--ink);">M. Rachidi</div>
+                      <div style="font-size:11px;color:var(--ink-soft);">Congé exceptionnel · 2 jours</div>
+                    </div>
+                    <span class="badge badge-amber">En attente</span>
+                    <button class="btn btn-primary btn-sm">✓</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 2 — DEMANDE RH (Formulaire + Suivi)
+     ═══════════════════════════════════════════════════ -->
+<div id="screen2" class="screen-section" style="background:#F0FFF8;padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num" style="background:#0D3268;color:#6EE7B7;">02</div>
+      <div>
+        <div class="screen-title">Module RH — Nouvelle demande & suivi</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Formulaire de demande · Rôle : Employé</div>
+      </div>
+      <span class="screen-desc">1280 × 720</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/rh/demandes/nouvelle</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <div class="sidebar">
+          <div class="sidebar-logo">
+            <div class="logo-row">
+              <div class="logo-icon">🏫</div>
+              <div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="user-avatar" style="background:linear-gradient(135deg,#0D7A55,#1A5FD6);">HB</div>
+            <div class="user-info">
+              <div class="user-name">H. Benali</div>
+              <div class="user-role">Employé</div>
+            </div>
+          </div>
+          <div class="sidebar-nav">
+            <div class="nav-section"><div class="nav-section-label">Principal</div></div>
+            <div class="nav-item"><span class="ni">⊞</span> Tableau de bord</div>
+            <div class="nav-section"><div class="nav-section-label">Ressources humaines</div></div>
+            <div class="nav-item active"><span class="ni">📋</span> Mes demandes</div>
+            <div class="nav-item"><span class="ni">📅</span> Mes congés</div>
+            <div class="nav-item"><span class="ni">📄</span> Mes documents</div>
+            <div class="nav-section"><div class="nav-section-label">Compte</div></div>
+            <div class="nav-item"><span class="ni">👤</span> Mon profil</div>
+            <div class="nav-item"><span class="ni">⚙️</span> Paramètres</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="topbar">
+            <div class="topbar-title">Ressources Humaines · Nouvelle demande</div>
+            <div class="topbar-actions">
+              <div class="icon-btn">🔔</div>
+            </div>
+          </div>
+          <div class="page-body" style="display:grid;grid-template-columns:1fr 320px;gap:16px;">
+            <!-- Form -->
+            <div class="card" style="height:fit-content;">
+              <div style="margin-bottom:16px;">
+                <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Nouvelle demande administrative</div>
+                <div style="font-size:12px;color:var(--ink-soft);">Remplissez le formulaire ci-dessous. Le délai de traitement est de 48h ouvrables.</div>
+              </div>
+              <div class="alert alert-info">
+                <span class="alert-icon">ℹ️</span>
+                <span>Votre solde de congés disponible : <strong>12 jours</strong>. Congés maladie : <strong>Non plafonné</strong> (justificatif requis)</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Type de demande *</label>
+                <select class="form-select">
+                  <option selected>Congé maladie</option>
+                  <option>Congé exceptionnel</option>
+                  <option>Attestation de travail</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Date de début *</label>
+                  <input type="text" class="form-input filled" value="16/03/2026" readonly>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date de fin *</label>
+                  <input type="text" class="form-input filled" value="20/03/2026" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Motif détaillé *</label>
+                <textarea class="form-textarea" readonly>Hospitalisation pour intervention chirurgicale planifiée. Certificat médical joint.</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pièce justificative</label>
+                <div class="upload-zone">
+                  <div class="upload-icon">📎</div>
+                  <div style="font-weight:600;margin-bottom:2px;">certificat-medical.pdf</div>
+                  <div style="font-size:10px;color:var(--green-600);font-weight:600;">✓ Fichier chargé · 234 KB</div>
+                </div>
+              </div>
+              <div class="form-footer">
+                <button class="btn btn-outline">Annuler</button>
+                <button class="btn btn-primary">Envoyer la demande →</button>
+              </div>
+            </div>
+            <!-- Sidebar: suivi -->
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <!-- Solde congés -->
+              <div class="card">
+                <div class="section-title" style="margin-bottom:12px;">🗓 Solde congés 2025–26</div>
+                <div style="margin-bottom:10px;">
+                  <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-bottom:4px;"><span>Congés annuels</span><span style="font-weight:700;color:var(--ink)">12 / 20 j</span></div>
+                  <div class="progress-bar-wrap"><div class="progress-bar" style="width:60%;background:var(--blue-500);"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-bottom:4px;"><span>Congés utilisés</span><span style="font-weight:700;color:var(--ink)">8 j</span></div>
+                  <div class="progress-bar-wrap"><div class="progress-bar" style="width:40%;background:var(--amber-600);"></div></div>
+                </div>
+              </div>
+              <!-- Historique demandes -->
+              <div class="card" style="flex:1;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                  <div class="section-title">Mes demandes récentes</div>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-dot done"></div>
+                    <div class="tl-title">Attestation de travail</div>
+                    <div class="tl-meta">Approuvée · 02/02/2026</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot pending"></div>
+                    <div class="tl-title">Congé exceptionnel (2 j)</div>
+                    <div class="tl-meta">En attente · 18/01/2026</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot done"></div>
+                    <div class="tl-title">Congé annuel (5 j)</div>
+                    <div class="tl-meta">Approuvée · 12/12/2025</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot done"></div>
+                    <div class="tl-title">Attestation de travail</div>
+                    <div class="tl-meta">Approuvée · 04/11/2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 3 — GESTION FINANCIÈRE
+     ═══════════════════════════════════════════════════ -->
+<div id="screen3" class="screen-section" style="background:#FFFBF0;padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num" style="background:#3B1C00;color:#FCD34D;">03</div>
+      <div>
+        <div class="screen-title">Module Financier — Bilan & opérations</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Revenus, dépenses, bilan auto · Rôle : Service Financier</div>
+      </div>
+      <span class="screen-desc">1280 × 720</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/finance/bilan</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <div class="sidebar">
+          <div class="sidebar-logo">
+            <div class="logo-row">
+              <div class="logo-icon">🏫</div>
+              <div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="user-avatar" style="background:linear-gradient(135deg,#C07A00,#C4283C);">SF</div>
+            <div class="user-info">
+              <div class="user-name">Service Financier</div>
+              <div class="user-role" style="background:rgba(192,122,0,0.2);color:#C07A00;">Financier</div>
+            </div>
+          </div>
+          <div class="sidebar-nav">
+            <div class="nav-section"><div class="nav-section-label">Finances</div></div>
+            <div class="nav-item active"><span class="ni">📊</span> Bilan financier</div>
+            <div class="nav-item"><span class="ni">📈</span> Revenus</div>
+            <div class="nav-item"><span class="ni">📉</span> Dépenses</div>
+            <div class="nav-item"><span class="ni">📋</span> Opérations</div>
+            <div class="nav-item"><span class="ni">📄</span> Rapports PDF</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="topbar">
+            <div class="topbar-title">Gestion Financière · Bilan Mars 2026</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="tabs">
+                <div class="tab">Année</div><div class="tab active">Mois</div><div class="tab">Trimestre</div>
+              </div>
+              <button class="btn btn-primary btn-sm">+ Opération</button>
+              <button class="btn btn-outline btn-sm">📥 Export PDF</button>
+            </div>
+          </div>
+          <div class="page-body">
+            <!-- Bilan summary cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;">
+              <div class="card" style="border-top:3px solid var(--green-600);">
+                <div style="font-size:11px;font-weight:700;color:var(--green-600);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Total Revenus</div>
+                <div style="font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">142 500</div>
+                <div style="font-size:11px;color:var(--ink-soft);">MAD · Mars 2026</div>
+                <div class="mini-chart" style="height:40px;margin-top:10px;">
+                  <div class="bar" style="height:50%;background:var(--green-100);"></div>
+                  <div class="bar" style="height:70%;background:#86EFAC;"></div>
+                  <div class="bar" style="height:45%;background:var(--green-100);"></div>
+                  <div class="bar" style="height:80%;background:#4ADE80;"></div>
+                  <div class="bar" style="height:60%;background:#86EFAC;"></div>
+                  <div class="bar" style="height:95%;background:#22C55E;"></div>
+                </div>
+              </div>
+              <div class="card" style="border-top:3px solid var(--red-600);">
+                <div style="font-size:11px;font-weight:700;color:var(--red-600);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Total Dépenses</div>
+                <div style="font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">100 200</div>
+                <div style="font-size:11px;color:var(--ink-soft);">MAD · Mars 2026</div>
+                <div class="mini-chart" style="height:40px;margin-top:10px;">
+                  <div class="bar" style="height:60%;background:#FECACA;"></div>
+                  <div class="bar" style="height:40%;background:#FCA5A5;"></div>
+                  <div class="bar" style="height:75%;background:#F87171;"></div>
+                  <div class="bar" style="height:55%;background:#FECACA;"></div>
+                  <div class="bar" style="height:65%;background:#FCA5A5;"></div>
+                  <div class="bar" style="height:80%;background:#EF4444;"></div>
+                </div>
+              </div>
+              <div class="card" style="border-top:3px solid var(--blue-600);background:linear-gradient(135deg,var(--blue-900),#0D3268);color:#fff;">
+                <div style="font-size:11px;font-weight:700;color:var(--blue-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Bilan Net</div>
+                <div style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:#fff;">+42 300</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.5);">MAD · Excédent</div>
+                <div style="margin-top:10px;">
+                  <div style="font-size:11px;color:rgba(255,255,255,0.6);">Taux réalisation budget :</div>
+                  <div class="progress-bar-wrap" style="background:rgba(255,255,255,0.1);margin-top:6px;">
+                    <div class="progress-bar" style="width:71%;background:var(--blue-400);"></div>
+                  </div>
+                  <div style="font-size:10px;color:var(--blue-400);margin-top:3px;text-align:right;">71%</div>
+                </div>
+              </div>
+            </div>
+            <!-- Operations table -->
+            <div class="section-header">
+              <div class="section-title">Dernières opérations</div>
+              <div style="display:flex;gap:8px;">
+                <select class="form-select" style="width:140px;font-size:12px;padding:6px 10px;">
+                  <option>Tout type</option>
+                  <option>Revenus</option>
+                  <option>Dépenses</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th><th>Description</th><th>Catégorie</th>
+                    <th>Type</th><th style="text-align:right">Montant (MAD)</th><th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">10/03/2026</td>
+                    <td><div style="font-weight:600;">Inscriptions scolaires S2</div><div style="font-size:11px;color:var(--ink-soft);">142 élèves · 2ème tranche</div></td>
+                    <td><span class="chip">Inscription</span></td>
+                    <td><span class="badge badge-green">Revenu</span></td>
+                    <td style="text-align:right;font-weight:700;color:var(--green-600);font-family:var(--font-mono);">+71 000</td>
+                    <td><span class="badge badge-green">Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">08/03/2026</td>
+                    <td><div style="font-weight:600;">Maintenance bâtiment B</div><div style="font-size:11px;color:var(--ink-soft);">Réparation chauffage</div></td>
+                    <td><span class="chip">Maintenance</span></td>
+                    <td><span class="badge badge-red">Dépense</span></td>
+                    <td style="text-align:right;font-weight:700;color:var(--red-600);font-family:var(--font-mono);">-8 400</td>
+                    <td><span class="badge badge-green">Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">05/03/2026</td>
+                    <td><div style="font-weight:600;">Subvention Académie</div><div style="font-size:11px;color:var(--ink-soft);">Dotation trimestrielle</div></td>
+                    <td><span class="chip">Subvention</span></td>
+                    <td><span class="badge badge-green">Revenu</span></td>
+                    <td style="text-align:right;font-weight:700;color:var(--green-600);font-family:var(--font-mono);">+35 000</td>
+                    <td><span class="badge badge-green">Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">03/03/2026</td>
+                    <td><div style="font-weight:600;">Fournitures scolaires</div><div style="font-size:11px;color:var(--ink-soft);">Papeterie, cahiers, craies</div></td>
+                    <td><span class="chip">Matériel</span></td>
+                    <td><span class="badge badge-red">Dépense</span></td>
+                    <td style="text-align:right;font-weight:700;color:var(--red-600);font-family:var(--font-mono);">-12 500</td>
+                    <td><span class="badge badge-amber">En attente</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 4 — VIE SCOLAIRE / SURVEILLANT GÉNÉRAL
+     ═══════════════════════════════════════════════════ -->
+<div id="screen4" class="screen-section" style="background:#F5F0FF;padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num" style="background:#2D0762;color:#C4B5FD;">04</div>
+      <div>
+        <div class="screen-title">Vie Scolaire — Dossiers & absences</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Gestion des élèves, absences · Rôle : Surveillant Général</div>
+      </div>
+      <span class="screen-desc">1280 × 720</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/vie-scolaire/eleves</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <div class="sidebar" style="background:#1A0B33;">
+          <div class="sidebar-logo">
+            <div class="logo-row">
+              <div class="logo-icon" style="background:linear-gradient(135deg,#7C3AED,#4F46E5);">🏫</div>
+              <div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="user-avatar" style="background:linear-gradient(135deg,#7C3AED,#6B3FA0);">SG</div>
+            <div class="user-info">
+              <div class="user-name">Surv. Général</div>
+              <div class="user-role" style="background:rgba(124,58,237,0.2);color:#A78BFA;">Surveillant</div>
+            </div>
+          </div>
+          <div class="sidebar-nav">
+            <div class="nav-section"><div class="nav-section-label">Vie scolaire</div></div>
+            <div class="nav-item active" style="border-left-color:#7C3AED;background:rgba(124,58,237,0.18);"><span class="ni">👨‍🎓</span> Dossiers élèves</div>
+            <div class="nav-item"><span class="ni">📁</span> Dossiers collectifs</div>
+            <div class="nav-item"><span class="ni">🚨</span> Absences <span class="nav-badge">7</span></div>
+            <div class="nav-item"><span class="ni">📬</span> Transmissions</div>
+            <div class="nav-section"><div class="nav-section-label">Import</div></div>
+            <div class="nav-item"><span class="ni">🔗</span> Sync MASSAR</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="topbar">
+            <div class="topbar-title">Dossiers Élèves</div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div class="topbar-search">
+                <span>🔍</span><input placeholder="Nom, code MASSAR, classe…" readonly>
+              </div>
+              <select class="form-select" style="width:130px;font-size:12px;padding:7px 10px;">
+                <option>Toutes classes</option>
+                <option>3ème A</option><option>3ème B</option>
+              </select>
+              <button class="btn btn-primary btn-sm">+ Nouveau dossier</button>
+            </div>
+          </div>
+          <div class="page-body" style="display:grid;grid-template-columns:1fr 300px;gap:16px;">
+            <!-- Liste élèves -->
+            <div>
+              <div class="alert alert-warn" style="margin-bottom:14px;">
+                <span class="alert-icon">⚠️</span>
+                <span><strong>7 élèves</strong> ont dépassé le seuil d'absences (10h). Un rapport automatique a été préparé.</span>
+              </div>
+              <div class="table-wrap">
+                <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
+                  <div class="tabs">
+                    <div class="tab active">Tous (847)</div>
+                    <div class="tab">Alertes (7)</div>
+                    <div class="tab">Absents aujourd'hui (23)</div>
+                  </div>
+                </div>
+                <div class="eleve-card" style="background:var(--red-100);">
+                  <div class="eleve-avatar" style="background:linear-gradient(135deg,#C4283C,#C07A00);">YA</div>
+                  <div style="flex:1;">
+                    <div class="eleve-name">Youssef Amrani</div>
+                    <div class="eleve-meta">Massar: M20089042 · 3ème A · <strong style="color:var(--red-600)">18h d'absences</strong></div>
+                  </div>
+                  <div class="eleve-right">
+                    <span class="badge badge-red">⚠ Alerte</span>
+                    <button class="btn btn-outline btn-sm">Dossier</button>
+                  </div>
+                </div>
+                <div class="eleve-card">
+                  <div class="eleve-avatar" style="background:linear-gradient(135deg,#2E7CF6,#6B3FA0);">SB</div>
+                  <div style="flex:1;">
+                    <div class="eleve-name">Sara Benhaddou</div>
+                    <div class="eleve-meta">Massar: M20089103 · 3ème B · 4h d'absences</div>
+                  </div>
+                  <div class="eleve-right">
+                    <span class="badge badge-green">Normal</span>
+                    <button class="btn btn-outline btn-sm">Dossier</button>
+                  </div>
+                </div>
+                <div class="eleve-card">
+                  <div class="eleve-avatar" style="background:linear-gradient(135deg,#0D7A55,#1148A8);">KA</div>
+                  <div style="flex:1;">
+                    <div class="eleve-name">Karim Alaoui</div>
+                    <div class="eleve-meta">Massar: M20089211 · 4ème A · 2h d'absences</div>
+                  </div>
+                  <div class="eleve-right">
+                    <span class="badge badge-green">Normal</span>
+                    <button class="btn btn-outline btn-sm">Dossier</button>
+                  </div>
+                </div>
+                <div class="eleve-card">
+                  <div class="eleve-avatar" style="background:linear-gradient(135deg,#C07A00,#C4283C);">NB</div>
+                  <div style="flex:1;">
+                    <div class="eleve-name">Nadia Berrada</div>
+                    <div class="eleve-meta">Massar: M20089478 · 2ème B · <strong style="color:var(--amber-600)">12h d'absences</strong></div>
+                  </div>
+                  <div class="eleve-right">
+                    <span class="badge badge-amber">Attention</span>
+                    <button class="btn btn-outline btn-sm">Dossier</button>
+                  </div>
+                </div>
+                <div style="padding:12px 16px;text-align:center;">
+                  <button class="btn btn-ghost" style="font-size:12px;">Charger plus d'élèves…</button>
+                </div>
+              </div>
+            </div>
+            <!-- Stats sidebar -->
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div class="card">
+                <div class="section-title" style="margin-bottom:12px;">📊 Absences du jour</div>
+                <div style="font-size:32px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1;">23</div>
+                <div style="font-size:11px;color:var(--ink-soft);margin-bottom:12px;">élèves absents · 11 mars 2026</div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:var(--ink-soft)">Justifiées</span><span style="font-weight:600;color:var(--green-600)">15</span></div>
+                  <div class="progress-bar-wrap"><div class="progress-bar" style="width:65%;background:var(--green-600);"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:8px;margin-bottom:3px;"><span style="color:var(--ink-soft)">Injustifiées</span><span style="font-weight:600;color:var(--red-600)">8</span></div>
+                  <div class="progress-bar-wrap"><div class="progress-bar" style="width:35%;background:var(--red-600);"></div></div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="section-title" style="margin-bottom:12px;">🔗 Sync MASSAR</div>
+                <div style="font-size:11px;color:var(--ink-soft);margin-bottom:10px;">Dernière synchronisation :</div>
+                <div style="font-size:12px;font-weight:600;color:var(--ink);font-family:var(--font-mono);">Aujourd'hui · 06:30</div>
+                <div style="margin-top:10px;"><span class="badge badge-green">✓ Synchronisé</span></div>
+                <button class="btn btn-outline btn-sm" style="width:100%;margin-top:12px;justify-content:center;">🔄 Sync maintenant</button>
+              </div>
+              <div class="card">
+                <div class="section-title" style="margin-bottom:10px;">📬 Transmissions récentes</div>
+                <div style="font-size:12px;color:var(--ink-mid);line-height:1.7;">
+                  <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);">
+                    <span>Rapport absences</span><span style="font-size:10px;color:var(--ink-soft);">→ Direction</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);">
+                    <span>Dossier Y. Amrani</span><span style="font-size:10px;color:var(--ink-soft);">→ Direction</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;padding:5px 0;">
+                    <span>Liste absences S8</span><span style="font-size:10px;color:var(--ink-soft);">→ Adm.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 5 — DOCUMENTS SCOLAIRES
+     ═══════════════════════════════════════════════════ -->
+<div id="screen5" class="screen-section" style="background:#FFF0F0;padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num" style="background:#3B0010;color:#FCA5A5;">05</div>
+      <div>
+        <div class="screen-title">Documents Scolaires — Certificats & résultats</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Génération PDF, bulletins · Rôle : Surveillant Général</div>
+      </div>
+      <span class="screen-desc">1280 × 720</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/documents/certificats</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <div class="sidebar" style="background:#1A0A0A;">
+          <div class="sidebar-logo">
+            <div class="logo-row">
+              <div class="logo-icon" style="background:linear-gradient(135deg,#C4283C,#C07A00);">🏫</div>
+              <div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div>
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="user-avatar" style="background:linear-gradient(135deg,#7C3AED,#6B3FA0);">SG</div>
+            <div class="user-info">
+              <div class="user-name">Surv. Général</div>
+              <div class="user-role" style="background:rgba(124,58,237,0.2);color:#A78BFA;">Surveillant</div>
+            </div>
+          </div>
+          <div class="sidebar-nav">
+            <div class="nav-section"><div class="nav-section-label">Documents</div></div>
+            <div class="nav-item active" style="border-left-color:#C4283C;background:rgba(196,40,60,0.18);"><span class="ni">📜</span> Certificats scolarité</div>
+            <div class="nav-item"><span class="ni">📊</span> Résultats scolaires</div>
+            <div class="nav-item"><span class="ni">📋</span> Bulletins de notes</div>
+            <div class="nav-item"><span class="ni">📈</span> Exploitation résultats</div>
+            <div class="nav-item"><span class="ni">🗂</span> Archives</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="topbar">
+            <div class="topbar-title">Documents Scolaires · Certificats de Scolarité</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-primary btn-sm">+ Générer un certificat</button>
+              <button class="btn btn-outline btn-sm">📊 Exporter liste</button>
+            </div>
+          </div>
+          <div class="page-body">
+            <!-- Quick actions -->
+            <div class="quick-grid" style="margin-bottom:20px;">
+              <div class="quick-card">
+                <div class="quick-icon" style="background:var(--red-100);">📜</div>
+                <div class="quick-label">Certificat de scolarité</div>
+              </div>
+              <div class="quick-card">
+                <div class="quick-icon" style="background:var(--blue-100);">📊</div>
+                <div class="quick-label">Bulletin de notes</div>
+              </div>
+              <div class="quick-card">
+                <div class="quick-icon" style="background:var(--green-100);">📈</div>
+                <div class="quick-label">Analyse résultats</div>
+              </div>
+              <div class="quick-card">
+                <div class="quick-icon" style="background:var(--amber-100);">🏆</div>
+                <div class="quick-label">Classement classe</div>
+              </div>
+            </div>
+            <!-- Two columns -->
+            <div class="cards-2col">
+              <!-- Certificats récents -->
+              <div>
+                <div class="section-header" style="margin-bottom:12px;">
+                  <div class="section-title">Certificats générés récemment</div>
+                  <button class="btn btn-ghost btn-sm">Voir tout →</button>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>Élève</th><th>N° Certificat</th><th>Date</th><th>Statut</th><th></th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><div style="font-weight:600;font-size:12px;">Sara Benhaddou</div><div style="font-size:11px;color:var(--ink-soft);">3ème B · M20089103</div></td>
+                        <td><span style="font-family:var(--font-mono);font-size:11px;">CERT-2026-0421</span></td>
+                        <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">11/03/2026</td>
+                        <td><span class="badge badge-green">Émis</span></td>
+                        <td><button class="btn btn-outline btn-sm">📥 PDF</button></td>
+                      </tr>
+                      <tr>
+                        <td><div style="font-weight:600;font-size:12px;">Karim Alaoui</div><div style="font-size:11px;color:var(--ink-soft);">4ème A · M20089211</div></td>
+                        <td><span style="font-family:var(--font-mono);font-size:11px;">CERT-2026-0420</span></td>
+                        <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">10/03/2026</td>
+                        <td><span class="badge badge-green">Émis</span></td>
+                        <td><button class="btn btn-outline btn-sm">📥 PDF</button></td>
+                      </tr>
+                      <tr>
+                        <td><div style="font-weight:600;font-size:12px;">Nadia Berrada</div><div style="font-size:11px;color:var(--ink-soft);">2ème B · M20089478</div></td>
+                        <td><span style="font-family:var(--font-mono);font-size:11px;">CERT-2026-0419</span></td>
+                        <td style="font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);">09/03/2026</td>
+                        <td><span class="badge badge-green">Émis</span></td>
+                        <td><button class="btn btn-outline btn-sm">📥 PDF</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Stats résultats -->
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div class="card">
+                  <div class="section-title" style="margin-bottom:14px;">📊 Résultats — T2 · Classe 3ème A</div>
+                  <div style="display:flex;flex-direction:column;gap:8px;">
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span style="color:var(--ink-soft)">Mention Très Bien (≥ 16)</span><span style="font-weight:700;color:var(--ink)">8 élèves</span></div>
+                      <div class="progress-bar-wrap"><div class="progress-bar" style="width:25%;background:#22C55E;"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span style="color:var(--ink-soft)">Mention Bien (14–16)</span><span style="font-weight:700;color:var(--ink)">14 élèves</span></div>
+                      <div class="progress-bar-wrap"><div class="progress-bar" style="width:44%;background:#60A5FA;"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span style="color:var(--ink-soft)">Assez Bien (12–14)</span><span style="font-weight:700;color:var(--ink)">7 élèves</span></div>
+                      <div class="progress-bar-wrap"><div class="progress-bar" style="width:22%;background:#FBBF24;"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span style="color:var(--ink-soft)">En difficulté (&lt; 10)</span><span style="font-weight:700;color:var(--red-600)">3 élèves</span></div>
+                      <div class="progress-bar-wrap"><div class="progress-bar" style="width:9%;background:var(--red-600);"></div></div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div style="text-align:center;flex:1;">
+                      <div style="font-size:20px;font-weight:800;color:var(--ink);">13.4</div>
+                      <div style="font-size:10px;color:var(--ink-soft);">Moy. classe</div>
+                    </div>
+                    <div style="text-align:center;flex:1;">
+                      <div style="font-size:20px;font-weight:800;color:var(--green-600);">91%</div>
+                      <div style="font-size:10px;color:var(--ink-soft);">Taux réussite</div>
+                    </div>
+                    <div style="text-align:center;flex:1;">
+                      <div style="font-size:20px;font-weight:800;color:var(--ink);">32</div>
+                      <div style="font-size:10px;color:var(--ink-soft);">Élèves</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCREEN 6 — MODAL VALIDATION DEMANDE RH
+     ═══════════════════════════════════════════════════ -->
+<div id="screen6" class="screen-section" style="background:#EFF6FF;padding:40px 0;">
+  <div class="app-frame">
+    <div class="screen-label">
+      <div class="screen-num">06</div>
+      <div>
+        <div class="screen-title">Modal — Validation d'une demande RH</div>
+        <div style="font-size:11px;color:var(--ink-soft)">Confirmation action Direction · Overlay modal</div>
+      </div>
+      <span class="screen-desc">Modal 440px</span>
+    </div>
+    <div class="browser-wrap">
+      <div class="browser-bar">
+        <div class="browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <div class="browser-url">https://sgs.college-ibn-battouta.ma/rh/demandes</div>
+      </div>
+      <div class="app-shell" style="border-radius:0 0 var(--radius-xl) var(--radius-xl);">
+        <div class="sidebar">
+          <div class="sidebar-logo"><div class="logo-row"><div class="logo-icon">🏫</div><div><div class="logo-name">SGS</div><div class="logo-sub">Collège Ibn Battouta</div></div></div></div>
+          <div class="sidebar-user"><div class="user-avatar">MA</div><div class="user-info"><div class="user-name">M. Al-Fassi</div><div class="user-role">Direction</div></div></div>
+          <div class="sidebar-nav">
+            <div class="nav-item"><span class="ni">⊞</span> Tableau de bord</div>
+            <div class="nav-item active"><span class="ni">👥</span> Ressources humaines</div>
+            <div class="nav-item"><span class="ni">💰</span> Gestion financière</div>
+            <div class="nav-item"><span class="ni">🏠</span> Vie scolaire</div>
+          </div>
+        </div>
+        <div class="main-content" style="position:relative;filter:blur(1px);pointer-events:none;">
+          <div class="topbar"><div class="topbar-title" style="opacity:0.4;">Ressources Humaines · Demandes en attente</div></div>
+          <div class="page-body">
+            <div class="table-wrap" style="opacity:0.35;">
+              <table class="data-table">
+                <thead><tr><th>Employé</th><th>Type</th><th>Période</th><th>Statut</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td>H. Benali</td><td>Congé maladie</td><td>16–20/03</td><td><span class="badge badge-amber">En attente</span></td><td></td></tr>
+                  <tr><td>K. Ouahbi</td><td>Attestation</td><td>—</td><td><span class="badge badge-amber">En attente</span></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- MODAL -->
+        <div class="modal-overlay" style="position:absolute;">
+          <div class="modal">
+            <div class="modal-header">
+              <div>
+                <div class="modal-title">Valider la demande</div>
+                <div style="font-size:11px;color:var(--ink-soft);margin-top:2px;">REF: RH-2026-0089</div>
+              </div>
+              <div class="modal-close">×</div>
+            </div>
+            <div class="modal-body">
+              <div class="modal-badge">
+                <span style="font-size:20px;">👤</span>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--ink);">H. Benali — Congé maladie</div>
+                  <div style="font-size:11px;color:var(--blue-700);">16/03/2026 au 20/03/2026 · 5 jours ouvrés</div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+                <div style="background:var(--canvas);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px;">
+                  <div style="font-size:10px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Pièce jointe</div>
+                  <div style="font-size:12px;font-weight:600;color:var(--ink);">📎 certificat-médical.pdf</div>
+                  <div style="font-size:10px;color:var(--green-600);margin-top:2px;">✓ Vérifié</div>
+                </div>
+                <div style="background:var(--canvas);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px;">
+                  <div style="font-size:10px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Solde congés</div>
+                  <div style="font-size:12px;font-weight:600;color:var(--ink);">12 jours disponibles</div>
+                  <div style="font-size:10px;color:var(--blue-600);margin-top:2px;">Après : 7 jours restants</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Commentaire (optionnel)</label>
+                <textarea class="form-textarea" placeholder="Ajouter une remarque…" style="height:60px;"></textarea>
+              </div>
+              <div class="form-footer" style="padding-top:12px;margin-top:0;">
+                <button class="btn btn-outline" style="color:var(--red-600);border-color:var(--red-100);">✗ Refuser</button>
+                <button class="btn btn-outline">Fermer</button>
+                <button class="btn btn-primary">✓ Approuver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════ -->
+<div style="background:#0A1628;padding:48px 40px;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:8px;">SGS · Maquettes UI/UX</div>
+    <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:24px;">L-03 · Livrable Cahier des Charges · v1.0</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;">
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">01 · Dashboard Direction</span>
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">02 · Module RH</span>
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">03 · Gestion Financière</span>
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">04 · Vie Scolaire</span>
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">05 · Documents Scolaires</span>
+      <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;">06 · Modal Validation</span>
+    </div>
+    <div style="color:rgba(255,255,255,0.25);font-size:11px;">Design system · Plus Jakarta Sans + DM Serif Display · Tokens CSS · Responsive-ready</div>
+  </div>
+</div>
+
+</body>
+</html>
